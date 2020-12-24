@@ -1,0 +1,82 @@
+[server]
+# Whether the Selenium server should allow web browser connections from any host
+# Type: boolean
+allow-cors = true
+
+# IP or hostname : usually determined automatically.
+# Type: string
+#hostname = "localhost"
+
+# Server certificate for https
+# Type: path
+#https-certificate = "/path/to/cert.pem"
+
+# Private key for https
+# Type: path
+#https-private-key = "/path/to/key.pkcs8"
+
+# Use a self-signed certificate for HTTPS communication
+# Type: boolean
+#https-self-signed = false
+
+# Maximum number of listener threads.
+# Type: int
+max-threads = 36
+
+# Port to listen on.
+# Type: int
+port = 4444
+
+# Node registration secret
+# Type: string
+registration-secret = "reallyasecret"
+
+
+[logging]
+# Configure logging
+# Type: boolean
+enable = true
+
+# Log encoding
+# Type: string
+log-encoding = UTF-8
+
+# File to write out logs
+# Type: string
+log-file = "/opt/selenium/seleniumGridHub.log"
+
+# Use plain log lines
+# Type: boolean
+plain-logs = true
+
+# Use structured logs
+# Type: boolean
+structured-logs = false
+
+# Enable trace collection
+# Type: boolean
+tracing = true
+
+
+[events]
+# Whether the connection string should be bound or connected
+# Type: boolean
+bind = true
+
+# Full classname of non-default event bus implementation
+# Type: string
+implementation = "org.openqa.selenium.events.zeromq.ZeroMqEventBus"
+
+# Connection string for publishing events to the event bus
+# Type: string
+publish = "tcp://seleniumhub:4442"
+
+# Connection string for subscribing to events from the event bus
+# Type: string
+subscribe = "tcp://seleniumhub:4443"
+
+
+[network]
+# Relax checks on origin header and content type of incoming requests, in contravention of strict W3C spec compliance.
+# Type: boolean
+relax-checks = false

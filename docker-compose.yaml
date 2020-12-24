@@ -1,0 +1,112 @@
+
+version: "3.9"
+
+services:
+  baseimage:
+    image: build/baseimage
+    build:
+      context: ./baseimage
+      dockerfile: Dockerfile
+    deploy:
+      labels:
+        com.github.thebridsk.build: ""
+      mode: replicated
+      replicas: 0
+    networks:
+      - buildnet
+
+  seleniumbase:
+    image: build/seleniumbase
+    extends:
+      service: baseimage
+    build:
+      context: ./seleniumbase
+      dockerfile: Dockerfile
+    deploy:
+      labels:
+        com.github.thebridsk.build: ""
+      mode: replicated
+      replicas: 0
+    networks:
+      - buildnet
+
+  seleniumhub:
+    image: build/seleniumhub
+    extends:
+      service: seleniumbase
+    build:
+      context: ./seleniumhub
+      dockerfile: Dockerfile
+      labels:
+        com.github.thebridsk.build: ""
+    deploy:
+      labels:
+        com.github.thebridsk.build: ""
+      mode: global
+      restart_policy:
+          condition: on-failure
+          max_attempts: 3
+    networks:
+      - buildnet
+
+  seleniumnode:
+    image: build/seleniumnode
+    extends:
+      service: seleniumbase
+    build:
+      context: ./seleniumnode
+      dockerfile: Dockerfile
+      labels:
+        com.github.thebridsk.build: ""
+    deploy:
+      labels:
+        com.github.thebridsk.build: ""
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+      restart_policy:
+          condition: on-failure
+          max_attempts: 3
+    depends_on:
+      - seleniumhub
+    networks:
+      - buildnet
+
+  sbt:
+    image: build/sbt
+    extends:
+      service: baseimage
+    build:
+      context: ./sbt
+      dockerfile: Dockerfile
+      labels:
+        com.github.thebridsk.build: ""
+    deploy:
+      labels:
+        com.github.thebridsk.build: ""
+      mode: global
+    depends_on:
+      - seleniumhub
+    volumes:
+      - buildvol:/opt/build:rw
+    networks:
+      - buildnet
+
+
+networks:
+  buildnet:
+    driver: bridge
+    labels:
+      com.github.thebridsk.build: ""
+
+
+volumes:
+  buildvol:
+
+# configs:
+
+# secrets:
+

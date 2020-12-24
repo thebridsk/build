@@ -1,0 +1,99 @@
+[node]
+# Autodetect which drivers are available on the current system, and add them to the node.
+# Type: boolean
+detect-drivers = false
+
+# Mapping of fully qualified class name to a browser configuration that this matches against. `--driver-factory org.openqa.selenium.example.LynxDriverFactory '{"browserName": "lynx"}')
+# Type: list of strings
+# driver-factories = ["org.openqa.selenium.example.LynxDriverFactory '{"browserName": "lynx"}']
+
+# Drivers that should be checked. If specified, will skip autoconfiguration. Example: -I "firefox" -I "chrome"
+# Type: list of strings
+drivers = ["firefox", "chrome"]
+
+# Public URL of the Grid as a whole (typically the address of the hub or the router)
+# Type: url
+grid-url = "http://selenium:4444"
+
+# Maximum number of concurrent sessions.
+# Type: int
+max-concurrent-sessions = 1
+
+
+[server]
+# Whether the Selenium server should allow web browser connections from any host
+# Type: boolean
+allow-cors = false
+
+# IP or hostname : usually determined automatically.
+# Type: string
+#hostname = "localhost"
+
+# Server certificate for https
+# Type: path
+#https-certificate = "/path/to/cert.pem"
+
+# Private key for https
+# Type: path
+#https-private-key = "/path/to/key.pkcs8"
+
+# Use a self-signed certificate for HTTPS communication
+# Type: boolean
+#https-self-signed = false
+
+# Maximum number of listener threads.
+# Type: int
+max-threads = 36
+
+# Port to listen on.
+# Type: int
+port = 5555
+
+# Node registration secret
+# Type: string
+registration-secret = "reallyasecret"
+
+
+[logging]
+# Configure logging
+# Type: boolean
+enable = true
+
+# Log encoding
+# Type: string
+log-encoding = UTF-8
+
+# File to write out logs
+# Type: string
+log-file = "/opt/selenium/seleniumGridNode.log"
+
+# Use plain log lines
+# Type: boolean
+plain-logs = true
+
+# Use structured logs
+# Type: boolean
+structured-logs = false
+
+# Enable trace collection
+# Type: boolean
+tracing = true
+
+
+[events]
+# Whether the connection string should be bound or connected
+# Type: boolean
+bind = false
+
+# Full classname of non-default event bus implementation
+# Type: string
+implementation = "org.openqa.selenium.events.zeromq.ZeroMqEventBus"
+
+# Connection string for publishing events to the event bus
+# Type: string
+publish = "tcp://seleniumhub:4442"
+
+# Connection string for subscribing to events from the event bus
+# Type: string
+subscribe = "tcp://seleniumhub:4443"
+
