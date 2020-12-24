@@ -71,7 +71,7 @@ The node is configured with the [nodeConfig.json](seleniumnode/nodeConfig.json) 
 The environment variable HUBURL should point to the Selenium Hub's exposed port, example:
 `HUBURL=http://seleniumhub:4444`
 
-### sbt
+## sbt
 
 This image contains [AdoptOpenJDK](https://adoptopenjdk.net/), from base image, [SBT](https://www.scala-sbt.org/) and [Node.js](https://nodejs.org/en/).
 
