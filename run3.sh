@@ -52,7 +52,7 @@ createHub() {
       --name seleniumhub \
       -p 127.0.0.1:4444:4444/tcp \
       --network="buildnet" \
-      build/seleniumhub
+      build/seleniumhub3
 }
 
 createNodes() {
@@ -65,7 +65,7 @@ createNodes() {
         -dit \
         --name seleniumnode$i \
         --network "buildnet" \
-        build/seleniumnode
+        build/seleniumnode3
   done
 }
 
@@ -77,7 +77,7 @@ createSbt() {
       -p 127.0.0.1:7080-7082:8080-8082/tcp \
       --mount type=volume,source=bridgescorer,destination=/opt/build \
       --network="buildnet" \
-      build/sbt
+      build/sbt3
 }
 
 startSbt() {

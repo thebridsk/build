@@ -1,4 +1,4 @@
-FROM build/baseimage:latest
+FROM build/baseimage3:latest
 
 WORKDIR /opt
 
