@@ -60,8 +60,9 @@ createNodes() {
   for i in $(seq 1 $1)
   do
     docker run ${buildoptions} \
-        --memory "1G" \
-        --memory-reservation "512M" \
+        --memory "2G" \
+        --memory-reservation "1G" \
+        --shm-size "1G" \
         -dit \
         --name seleniumnode$i \
         --network "buildnet" \

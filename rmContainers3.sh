@@ -19,4 +19,4 @@ fi
 
 cd $SCRIPTDIR
 
-./run.sh -rm
+./run3.sh -rm
