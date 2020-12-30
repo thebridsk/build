@@ -34,4 +34,4 @@ ENV DISPLAY=:99
 ENV HUBURL=http://seleniumhub:4444
 
 # CMD xvfb-run java -jar selenium-server-standalone-${VERSION_SELENIUMGRID}.jar -role node -hub ${HUBURL} -nodeConfig nodeConfig.json -log /opt/selenium/seleniumGridNode.log
-CMD xvfb-run java -jar ${BASE_NAME_SELENIUMGRID}-${VERSION_SELENIUMGRID}.jar node --config node4Config.toml
+CMD xvfb-run --server-args='-screen 0 1920x1080x24' java -jar ${BASE_NAME_SELENIUMGRID}-${VERSION_SELENIUMGRID}.jar node --config node4Config.toml
