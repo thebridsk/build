@@ -18,8 +18,8 @@ RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-ke
     && mv chromedriver /usr/bin/chromedriver
 
 COPY \
-     nodeConfig.json \
-    #  node4Config.toml \
+    #  nodeConfig.json \
+     node4Config.toml \
      /opt/selenium/
 
 USER build
