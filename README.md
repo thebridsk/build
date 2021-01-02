@@ -82,12 +82,12 @@ The environment variable HUBURL should point to the Selenium Hub's exposed port,
 
 The following environment variables are set for building and testing the BridgeScorer application:
 
-- `UseBridgeScorerHost=10.11.0.101` - the host the tests should use to access the BridgeScoreKeeper server.
+- `TestServerListen="http://sbt:8081"` - the URL the server listens on.  This requires a container name of `sbt`
+- `TestServerFixHostInURL=true` - fix hostname in TestServerURL.  This is to maintain connectivity from browser to the server.
 - `WebDriverDebug=true` - turn on WebDriver debugging
 - `BuildProduction=true` - production builds should be done
 - `ChromeNoSandbox=true` - Chrome must run with no-sandbox=true when running in a container.  See https://github.com/jessfraz/dockerfiles/issues/149 and https://github.com/jessfraz/dockerfiles/issues/65
 - `UseBrowser="remote chrome ${HUBURL}/wd/hub"` - the browser to use for testing
-- `StartTestServer="true"` - the test server should be started
 - `HOME=/opt/build/home` - the home directory
 
 Note: if setting the **HUBURL** env variable, the **UseBrowser** must also be set.
