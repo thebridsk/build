@@ -22,7 +22,7 @@ cd $SCRIPTDIR
 createImage() {
 
   cd $1
-  docker build -t build/$1:latest .
+  docker build -t build/${1}:latest .
   if [[ $? != 0 ]] ; then
     echo Failed to build $1
     exit 1

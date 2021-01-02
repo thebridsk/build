@@ -13,7 +13,7 @@ drivers = ["firefox", "chrome"]
 
 # Public URL of the Grid as a whole (typically the address of the hub or the router)
 # Type: url
-grid-url = "http://selenium:4444"
+grid-url = "http://seleniumhub:4444"
 
 # Maximum number of concurrent sessions.
 # Type: int

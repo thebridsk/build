@@ -18,8 +18,8 @@ RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-ke
     && mv chromedriver /usr/bin/chromedriver
 
 COPY \
-    #  nodeConfig.json \
-     node4Config.toml \
+     nodeConfig.json \
+    #  node4Config.toml \
      /opt/selenium/
 
 USER build
@@ -33,5 +33,5 @@ USER build
 ENV DISPLAY=:99
 ENV HUBURL=http://seleniumhub:4444
 
-# CMD xvfb-run java -jar selenium-server-standalone-${VERSION_SELENIUMGRID}.jar -role node -hub ${HUBURL} -nodeConfig nodeConfig.json -log /opt/selenium/seleniumGridNode.log
+# CMD xvfb-run --server-args='-screen 0 1920x1080x24' java -jar ${BASE_NAME_SELENIUMGRID}-${VERSION_SELENIUMGRID}.jar -role node -hub ${HUBURL} -nodeConfig nodeConfig.json -log /opt/selenium/seleniumGridNode.log
 CMD xvfb-run --server-args='-screen 0 1920x1080x24' java -jar ${BASE_NAME_SELENIUMGRID}-${VERSION_SELENIUMGRID}.jar node --config node4Config.toml

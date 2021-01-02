@@ -7,8 +7,8 @@ EXPOSE 4444
 WORKDIR /opt/selenium
 
 COPY \
-    #  hubConfig.json \
-     hub4Config.toml \
+     hubConfig.json \
+#     hub4Config.toml \
      /opt/selenium/
 
 #
