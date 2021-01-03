@@ -79,6 +79,7 @@ createSbt() {
       -p 127.0.0.1:7080-7082:8080-8082/tcp \
       -e TestServerListen=http://sbt:8081 \
       -e TestServerFixHostInURL=true \
+      -e VersionSelenium=4 \
       --mount type=volume,source=bridgescorer,destination=/opt/build \
       --network="buildnet" \
       build/sbt
@@ -98,6 +99,7 @@ createAllInOne() {
       -p 127.0.0.1:7080-7082:8080-8082/tcp \
       -e TestServerListen=http://localhost:8081 \
       -e TestServerFixHostInURL=true \
+      -e VersionSelenium=4 \
       --mount type=volume,source=bridgescorer,destination=/opt/build \
       --network="buildnet" \
       build/allinone
