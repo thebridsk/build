@@ -100,7 +100,7 @@ createAllInOne() {
       -e TestServerFixHostInURL=true \
       --mount type=volume,source=bridgescorer,destination=/opt/build \
       --network="buildnet" \
-      build/allinone3
+      build/allinone
 }
 
 startAllInOne() {

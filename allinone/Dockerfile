@@ -1,4 +1,4 @@
-FROM build/seleniumnode3:latest
+FROM build/seleniumnode:latest
 
 USER root
 
