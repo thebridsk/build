@@ -8,6 +8,7 @@ helpme()
 Syntax:
   $0 numberOfBrowsers
   $0 -sbt
+  $0 -allinone
   $0 -rm
   $0 [-h|--help]
 
@@ -88,10 +89,31 @@ startSbt() {
   docker start -i sbt
 }
 
+createAllInOne() {
+  echo Starting SBT
+  docker run ${buildoptions} \
+      -it \
+      --name allinone \
+      --shm-size "4G" \
+      -p 127.0.0.1:7080-7082:8080-8082/tcp \
+      -e TestServerListen=http://localhost:8081 \
+      -e TestServerFixHostInURL=true \
+      --mount type=volume,source=bridgescorer,destination=/opt/build \
+      --network="buildnet" \
+      build/allinone3
+}
+
+startAllInOne() {
+  echo Entering SBT
+  docker start -i allinone
+}
+
 if [[ "$1" == "-rm" ]] ; then
   rmAll
 elif [[ "$1" == "-sbt" ]] ; then
   startSbt
+elif [[ "$1" == "-allinone" ]] ; then
+  createAllInOne
 else
   rmAll
   startAll $1
